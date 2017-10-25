@@ -20,7 +20,7 @@ public class ProductoTest {
 
         comercio.agregarProductoConPrecio("pis",10);
         comercio.agregarProductoConPrecio("caca", 25);
-        Producto prod = comercio.agregarProductoConPrecio("pis", 30);
+        comercio.agregarProductoConPrecio("pis", 30);
 
         Assert.assertTrue(comercio.getCantidadDeProductos() == 2);
         Assert.assertTrue(comercio.getProducto("pis").getPrecio() == 30);
@@ -38,7 +38,7 @@ public class ProductoTest {
     @Test
     public void buscarUnProductoNoIngrsadoYDebeSerNull(){
         AlgoBay comercio = new AlgoBay();
-        Producto prod = comercio.agregarProductoConPrecio("zapato", 25);
+        comercio.agregarProductoConPrecio("zapato", 25);
         comercio.agregarProductoConPrecio("mesa", 10);
 
         Assert.assertNull(comercio.getProducto("guante"));

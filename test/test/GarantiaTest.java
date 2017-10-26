@@ -20,5 +20,4 @@ public class GarantiaTest {
 
         Assert.assertEquals(110, comercio.getPrecioTotalDe(compraConGarantia), DELTA);
     }
-
 }

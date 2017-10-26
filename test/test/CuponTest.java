@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class CuponTest {
 
-    private static final double DELTA = 1e-15;
+    private static final double DELTA = 1e-12;
 
     @Test
     public void crearCuponDeDescuento(){
@@ -74,7 +74,20 @@ public class CuponTest {
 
         Assert.assertTrue(comercio.getPrecioTotalDe(compra) == 225);
     }
-/*
+
+    @Test
+    public void aplicarCuponDeDescuentoACompraConGarantia(){
+        AlgoBay comercio = new AlgoBay();
+        Compra compra = comercio.crearNuevaCompraConGarantia();
+        Producto prod = comercio.agregarProductoConPrecio("zapato", 100);
+        Cupon cuponDe20porciento = comercio.crearCuponConPorcentaje(20);
+
+        comercio.agregarProductoEnCompra(prod, compra);
+        comercio.agregarCuponEnCompra(cuponDe20porciento, compra);
+
+        Assert.assertEquals(comercio.getPrecioTotalDe(compra), 88, DELTA);
+    }
+
     @Test
     public void aplicarCuponDeDescuentoACompraConEnvioYGarantia(){
         AlgoBay comercio = new AlgoBay();
@@ -87,5 +100,4 @@ public class CuponTest {
 
         Assert.assertEquals(238.5, comercio.getPrecioTotalDe(compra), DELTA);
     }
-*/
 }

@@ -11,6 +11,14 @@ public class CompraConAgregadoTest {
     private static final double DELTA = 1e-12;
 
     @Test
+    public void crearCompraConEnvioSinProductos(){
+        AlgoBay comercio = new AlgoBay();
+        Compra compraConEnvio = comercio.crearNuevaCompraConEnvio();
+
+        Assert.assertTrue(compraConEnvio.cantidadDeProductos() == 0);
+    }
+
+    @Test
     public void obtenerElPrecioDeUnaCompraConEnvioNoBonificado(){
         AlgoBay comercio = new AlgoBay();
         Compra compraConEnvio = comercio.crearNuevaCompraConEnvio();
@@ -30,6 +38,25 @@ public class CompraConAgregadoTest {
         comercio.agregarProductoEnCompra(prod, compraConEnvio);
 
         Assert.assertTrue(comercio.getPrecioTotalDe(compraConEnvio) == 5100);
+    }
+
+    @Test
+    public void crearCompraConGarantiaSinProductos(){
+        AlgoBay comercio = new AlgoBay();
+        Compra compraConGarantia = comercio.crearNuevaCompraConGarantia();
+
+        Assert.assertTrue(compraConGarantia.cantidadDeProductos() == 0);
+    }
+
+    @Test
+    public void obtenerPrecioDeCompraConGarantia(){
+        AlgoBay comercio = new AlgoBay();
+        Compra compraConGarnatia = comercio.crearNuevaCompraConGarantia();
+        Producto prod = comercio.agregarProductoConPrecio("zapato", 100);
+
+        comercio.agregarProductoEnCompra(prod, compraConGarnatia);
+
+        Assert.assertEquals(comercio.getPrecioTotalDe(compraConGarnatia), 110, DELTA);
     }
 
     @Test

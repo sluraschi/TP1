@@ -2,8 +2,8 @@ package comercioElectronico.adquiribles;
 
 public class Envio {
 
-    private int costoDeEnvio;
-    private int valorDeBonificacion;
+    private static int costoDeEnvio;
+    private static int valorDeBonificacion;
 
     public Envio(){
         costoDeEnvio = 100;
